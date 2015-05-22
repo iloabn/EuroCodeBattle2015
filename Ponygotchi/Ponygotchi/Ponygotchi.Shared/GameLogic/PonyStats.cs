@@ -14,6 +14,15 @@ namespace Ponygotchi.GameLogic
     {
         static ApplicationDataContainer StatsContainer;
 
+
+        public MoodEnum GetMood()
+        {
+            // Do stuff to calculate the mood of the pony
+
+            // Default
+            return MoodEnum.Happy;
+        }
+
         public TimeSpan GetAge()
         {
             var now = DateTime.UtcNow;

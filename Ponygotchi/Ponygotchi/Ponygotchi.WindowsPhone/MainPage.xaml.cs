@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Ponygotchi.GameLogic;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -22,12 +23,36 @@ namespace Ponygotchi
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        PonyStats ponyStats;
+
         public MainPage()
         {
             this.InitializeComponent();
 
             this.NavigationCacheMode = NavigationCacheMode.Required;
+
+            ponyStats = new PonyStats();
+            Loaded += MainPage_Loaded;
         }
+
+        private void MainPage_Loaded(object sender, RoutedEventArgs e)
+        {
+            var mood = ponyStats.GetMood();
+
+            switch (mood)
+            {
+                case MoodEnum.Happy:
+                    statusTxt.Text = "Happy pony!";
+                    break;
+                case MoodEnum.Neutral:
+                    statusTxt.Text = "Neutral pony...";
+                    break;
+                case MoodEnum.Sad:
+                    statusTxt.Text = "Noooo, do something!";
+                    break;
+            }
+        }
+
 
         /// <summary>
         /// Invoked when this page is about to be displayed in a Frame.

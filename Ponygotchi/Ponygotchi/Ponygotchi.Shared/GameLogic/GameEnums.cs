@@ -11,4 +11,11 @@ namespace Ponygotchi.GameLogic
         public const string Boredom = "Boredom";
 
     }
+
+    public enum MoodEnum
+    {
+        Happy,
+        Neutral,
+        Sad
+    }
 }
