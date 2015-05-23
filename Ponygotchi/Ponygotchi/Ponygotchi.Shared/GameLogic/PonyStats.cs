@@ -98,9 +98,9 @@ namespace Ponygotchi.GameLogic
         {
             LocalSettings.CreateContainer(Constants.StatsSettingsName);
             LocalSettings.UpdateContainer(Constants.StatsSettingsName, PonyStatsEnum.Name, newPonyName);
-            LocalSettings.UpdateContainer(Constants.StatsSettingsName, PonyStatsEnum.Age, DateTime.UtcNow);
-            LocalSettings.UpdateContainer(Constants.StatsSettingsName, PonyStatsEnum.Hunger, DateTime.UtcNow);
-            LocalSettings.UpdateContainer(Constants.StatsSettingsName, PonyStatsEnum.Boredom, DateTime.UtcNow);
+            LocalSettings.UpdateContainer(Constants.StatsSettingsName, PonyStatsEnum.Age, DateTime.UtcNow.ToString());
+            LocalSettings.UpdateContainer(Constants.StatsSettingsName, PonyStatsEnum.Hunger, DateTime.UtcNow.ToString());
+            LocalSettings.UpdateContainer(Constants.StatsSettingsName, PonyStatsEnum.Boredom, DateTime.UtcNow.ToString());
         }
 
         private DateTime GetStats(string chosenStat)
@@ -109,7 +109,7 @@ namespace Ponygotchi.GameLogic
                 StatsContainer = LocalSettings.GetContainer(Constants.StatsSettingsName);
 
             if (StatsContainer.Values.ContainsKey(chosenStat))
-                return (DateTime)StatsContainer.Values[chosenStat];
+                return DateTime.Parse((string)StatsContainer.Values[chosenStat]);
             else
                 throw new KeyNotFoundException(string.Format("Didn't find the stat {0}", chosenStat));
         }
