@@ -14,10 +14,16 @@ namespace Ponygotchi.Utils
 
         public static void GetReadyToMeetPony()
         {
+            try
+            { 
             device = ProximityDevice.GetDefault();
             if(device != null)
             {
                 device.DeviceArrived += Device_DeviceArrived;
+            }
+            }catch(Exception)
+            {
+
             }
         }
 
