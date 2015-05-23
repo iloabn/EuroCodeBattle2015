@@ -16,6 +16,9 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Constants.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\EventControl.xaml.cs">
+      <DependentUpon>EventControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)GameLogic\GameEnums.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GameLogic\PonyStats.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Pages\ChoosePony.xaml.cs">
@@ -27,6 +30,10 @@
     <Compile Include="$(MSBuildThisFileDirectory)Utils\LocalSettings.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="$(MSBuildThisFileDirectory)Controls\EventControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="$(MSBuildThisFileDirectory)Pages\ChoosePony.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

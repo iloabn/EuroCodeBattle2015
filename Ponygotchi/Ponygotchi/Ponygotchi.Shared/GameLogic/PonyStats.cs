@@ -41,6 +41,8 @@ namespace Ponygotchi.GameLogic
             LocalSettings.CreateContainer(Constants.StatsSettingsName);
             LocalSettings.UpdateContainer(Constants.StatsSettingsName, "Pony", newPonyName);
             LocalSettings.UpdateContainer(Constants.StatsSettingsName, PonyStatsEnum.Age, DateTime.UtcNow);
+            LocalSettings.UpdateContainer(Constants.StatsSettingsName, PonyStatsEnum.Hunger, DateTime.UtcNow);
+            LocalSettings.UpdateContainer(Constants.StatsSettingsName, PonyStatsEnum.Boredom, DateTime.UtcNow);
         }
 
         private T GetStats<T>(string chosenStat)
