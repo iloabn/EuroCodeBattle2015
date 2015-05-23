@@ -7,8 +7,9 @@ namespace Ponygotchi.GameLogic
     public static class PonyStatsEnum
     {
         public const string Age = "CreationDateTime";
-        public const string Hunger = "Hunger";
-        public const string Boredom = "Boredom";
+        public const string Hunger = "LastMeal";
+        public const string Boredom = "LastPlayed";
+        public const string Sleep = "LastSpelt";
         public const string Name = "Pony";
     }
 

@@ -75,6 +75,20 @@ namespace Ponygotchi.GameLogic
                 return (int)boredom;
         }
 
+        public int GetTiredness()
+        {
+            var now = DateTime.UtcNow;
+            var lastSlept = GetStats(PonyStatsEnum.Sleep);
+
+            var timeSincePlayed = now.Subtract(lastSlept);
+            var sleepiness = timeSincePlayed.TotalHours / 24 * 100;
+
+            if (sleepiness > 100)
+                throw new DeadPonyException();
+            else
+                return (int)sleepiness;
+        }
+
         /// <summary>
         /// Get if the pony has pooped since you last looked
         /// </summary>
@@ -101,6 +115,7 @@ namespace Ponygotchi.GameLogic
             LocalSettings.UpdateContainer(Constants.StatsSettingsName, PonyStatsEnum.Age, DateTime.UtcNow.ToString());
             LocalSettings.UpdateContainer(Constants.StatsSettingsName, PonyStatsEnum.Hunger, DateTime.UtcNow.ToString());
             LocalSettings.UpdateContainer(Constants.StatsSettingsName, PonyStatsEnum.Boredom, DateTime.UtcNow.ToString());
+            LocalSettings.UpdateContainer(Constants.StatsSettingsName, PonyStatsEnum.Sleep, DateTime.UtcNow.ToString());
             LocalSettings.UpdateContainer(Constants.StatsSettingsName, "Id", Guid.NewGuid().ToString());
         }
 
