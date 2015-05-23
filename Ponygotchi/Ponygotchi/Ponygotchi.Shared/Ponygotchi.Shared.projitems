@@ -45,21 +45,21 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="$(MSBuildThisFileDirectory)Images\Fluttershy\fluttershy-happy.png" />
-    <Content Include="$(MSBuildThisFileDirectory)Images\Fluttershy\fluttershy-neutral.png" />
-    <Content Include="$(MSBuildThisFileDirectory)Images\Fluttershy\fluttershy-sad.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Images\Fluttershy\happy.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Images\Fluttershy\neutral.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Images\Fluttershy\sad.png" />
     <Content Include="$(MSBuildThisFileDirectory)Images\Fluttershy\fluttershy_sitting_by_thatguy1945-d6tghrn.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="$(MSBuildThisFileDirectory)Images\Rainbow Dash\rainbowdash-happy.png" />
-    <Content Include="$(MSBuildThisFileDirectory)Images\Rainbow Dash\rainbowdash-neutral.png" />
-    <Content Include="$(MSBuildThisFileDirectory)Images\Rainbow Dash\rainbowdash-sad.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Images\Rainbow Dash\happy.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Images\Rainbow Dash\neutral.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Images\Rainbow Dash\sad.png" />
     <Content Include="$(MSBuildThisFileDirectory)Images\Rainbow Dash\rainbow_dash_by_freak0uo-d5nixo6.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="$(MSBuildThisFileDirectory)Images\Twilight Sparkle\twilight-sparkle-happy.png" />
-    <Content Include="$(MSBuildThisFileDirectory)Images\Twilight Sparkle\twilight-sparkle-neutral.png" />
-    <Content Include="$(MSBuildThisFileDirectory)Images\Twilight Sparkle\twilight-sparkle-sad.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Images\Twilight Sparkle\happy.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Images\Twilight Sparkle\neutral.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Images\Twilight Sparkle\sad.png" />
     <Content Include="$(MSBuildThisFileDirectory)Images\Twilight Sparkle\twiligth-sparkle-sleep.png" />
     <Content Include="$(MSBuildThisFileDirectory)Images\Twilight Sparkle\unamused_twilight_by_richhap-d4xop3k.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
