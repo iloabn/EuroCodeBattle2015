@@ -64,11 +64,9 @@ namespace Ponygotchi.GameLogic
         /// <returns>An int from 0 to 100 (0 is not hungry, 100 is dead hungry)</returns>
         public int GetHunger()
         {
-            var now = DateTime.UtcNow;
             var lastFeed = GetStats(PonyStatsEnum.Hunger);
 
-            var timeUnfeed = now.Subtract(lastFeed);
-            var hunger = timeUnfeed.TotalHours / 24 * 100;
+            var hunger = CalculateThing(lastFeed);
             if (hunger > 100)
                 throw new DeadPonyException();
             else
@@ -81,11 +79,9 @@ namespace Ponygotchi.GameLogic
         /// <returns>Between 0 and 100 (0 is not bored, 100 is bored to death)</returns>
         public int GetBoredom()
         {
-            var now = DateTime.UtcNow;
             var lastPlayed = GetStats(PonyStatsEnum.Boredom);
 
-            var timeSincePlayed = now.Subtract(lastPlayed);
-            var boredom = timeSincePlayed.TotalHours / 24 * 100;
+            var boredom = CalculateThing(lastPlayed);
 
             if (boredom > 100)
                 throw new DeadPonyException();
@@ -106,9 +102,8 @@ namespace Ponygotchi.GameLogic
         private int CalculateThing(DateTime thing)
         {
             var now = DateTime.UtcNow;
-            var timeSincePlayed = now.Subtract(lastSlept);
-            return percentage = timeSincePlayed.TotalHours / 24 * 100;
-
+            var timeSincePlayed = now.Subtract(thing);
+            return (int)(timeSincePlayed.TotalMinutes / 24 * 100);
         }
 
         /// <summary>
