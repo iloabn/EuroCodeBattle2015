@@ -15,6 +15,7 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
 using Ponygotchi.Utils;
+using System.Threading.Tasks;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -25,6 +26,7 @@ namespace Ponygotchi.Pages
     /// </summary>
     public sealed partial class PonyPage : Page
     {
+        int count = 0;
         public PonyPage()
         {
             this.InitializeComponent();
@@ -60,6 +62,19 @@ namespace Ponygotchi.Pages
             var name = pStats.GetPonyName();
             var url = "ms-appx:///Images/" + name + "/" + mood + ".png";
             PonyImage.Source = new BitmapImage(new Uri(url));
+        }
+
+        private async void PonyImage_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            count++;
+            if(count > 7)
+            {
+                Poop.Visibility = Windows.UI.Xaml.Visibility.Visible;
+                await Task.Delay(5000);
+                Poop.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+                count = 0;
+            }
+
         }
     }
 }
