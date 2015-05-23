@@ -76,5 +76,15 @@ namespace Ponygotchi.Pages
             }
 
         }
+
+        private async void Share()
+        {
+            await Windows.System.Launcher.LaunchUriAsync(new Uri("fb:post?text=My pony is " + new PonyStats().GetAge().Days.ToString() + " days old." + " Try and beat me if you can."));
+        }
+
+        private void Shared_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            Share();
+        }
     }
 }
