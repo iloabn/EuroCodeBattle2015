@@ -14,8 +14,8 @@ namespace Ponygotchi.GameLogic
     public static class PonyNameEnum
     {
         public const string Fluttershy = "Fluttershy";
-        public const string TwilightSparkle = "TwilightSparkle";
-        public const string RainbowDash = "RainbowDash";
+        public const string TwilightSparkle = "Twilight Sparkle";
+        public const string RainbowDash = "Rainbow Dash";
     }
 
     public enum MoodEnum

@@ -19,6 +19,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\EventControl.xaml.cs">
       <DependentUpon>EventControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)GameLogic\DeadPonyException.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GameLogic\GameEnums.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GameLogic\PonyStats.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Pages\ChoosePony.xaml.cs">
