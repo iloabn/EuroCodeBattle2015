@@ -6,8 +6,9 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <Image Source="ms-appx:///Images/Background/background_by_leopurofriki-d5ahtll.png" Stretch="Fill" Grid.RowSpan="2"/>
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0">
             <Image Name="PonyImage" HorizontalAlignment="Center" Margin="30" Height="400"  Width="400"/>
             <Image Name="Poop" Visibility="Collapsed" HorizontalAlignment="Center" Margin="100,100,0,0" Height="30"  Width="30"/>
