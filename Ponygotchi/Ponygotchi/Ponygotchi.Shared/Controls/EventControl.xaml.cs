@@ -28,7 +28,7 @@ namespace Ponygotchi.Controls
 
         private void EventControl_Loaded(object sender, RoutedEventArgs e)
         {
-            string uri = "ms-appx:///Images/Icon/";
+            string uri = "ms-appx:///Images/Needs/";
             switch(this.Name)
             {
                 case "Food":
