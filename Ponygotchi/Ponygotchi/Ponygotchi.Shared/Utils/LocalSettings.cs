@@ -7,6 +7,11 @@ namespace Ponygotchi.Utils
     {
         static ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;
 
+        public static bool HasContainer(string containerName)
+        {
+            return localSettings.Containers.ContainsKey(containerName);
+        }
+
         /// <summary>
         /// Gets the container with the name specified
         /// </summary>
@@ -14,7 +19,7 @@ namespace Ponygotchi.Utils
         /// <returns>The container or KeyNotFoundException if no such container was found</returns>
         public static ApplicationDataContainer GetContainer(string containerName)
         {
-            var hasContainer = localSettings.Containers.ContainsKey(containerName);
+            var hasContainer = HasContainer(containerName);
 
             if (hasContainer)
             {

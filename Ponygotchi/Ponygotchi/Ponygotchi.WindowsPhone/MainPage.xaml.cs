@@ -37,6 +37,8 @@ namespace Ponygotchi
 
         private void MainPage_Loaded(object sender, RoutedEventArgs e)
         {
+
+
             var mood = ponyStats.GetMood();
 
             switch (mood)
