@@ -21,6 +21,18 @@ namespace Ponygotchi.Controls
 {
     public sealed partial class EventControl : UserControl
     {
+        private static readonly DependencyProperty IsBarVisibleProperty =
+      DependencyProperty.Register("IsBarVisible",
+      typeof(bool),
+      typeof(EventControl), 
+      new PropertyMetadata(true));
+
+        public bool IsBarVisible
+        {
+            get { return (bool)GetValue(IsBarVisibleProperty); }
+            set { SetValue(IsBarVisibleProperty, value); }
+        }
+
         public EventControl()
         {
             this.InitializeComponent();
