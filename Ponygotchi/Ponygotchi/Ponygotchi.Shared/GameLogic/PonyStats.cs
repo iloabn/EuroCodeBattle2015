@@ -17,18 +17,76 @@ namespace Ponygotchi.GameLogic
 
         public MoodEnum GetMood()
         {
-            // Do stuff to calculate the mood of the pony
+            int maximumMood = Math.Max(GetBoredom(), GetHunger());
 
-            // Default
-            return MoodEnum.Happy;
+            if (maximumMood > PonyMoodLevels.Neutral)
+                if (maximumMood > PonyMoodLevels.Sad)
+                    return MoodEnum.Sad;
+                else
+                    return MoodEnum.Neutral;
+            else
+                return MoodEnum.Happy;
         }
 
+        /// <summary>
+        /// Gets the age of the pony
+        /// </summary>
+        /// <returns>A TimeSpan representing the age of the pony</returns>
         public TimeSpan GetAge()
         {
             var now = DateTime.UtcNow;
-            var creation = GetStats<DateTime>(PonyStatsEnum.Age);
+            var creation = GetStats(PonyStatsEnum.Age);
 
             return now.Subtract(creation);
+        }
+
+        /// <summary>
+        /// Gets the hunger level for the pony
+        /// </summary>
+        /// <returns>An int from 0 to 100 (0 is not hungry, 100 is dead hungry)</returns>
+        public int GetHunger()
+        {
+            var now = DateTime.UtcNow;
+            var lastFeed = GetStats(PonyStatsEnum.Hunger);
+
+            var timeUnfeed = now.Subtract(lastFeed);
+            var hunger = timeUnfeed.TotalHours / 24 * 100;
+            if (hunger > 100)
+                throw new DeadPonyException();
+            else
+                return (int)hunger;
+        }
+
+        /// <summary>
+        /// Gets the boredom level
+        /// </summary>
+        /// <returns>Between 0 and 100 (0 is not bored, 100 is bored to death)</returns>
+        public int GetBoredom()
+        {
+            var now = DateTime.UtcNow;
+            var lastPlayed = GetStats(PonyStatsEnum.Boredom);
+
+            var timeSincePlayed = now.Subtract(lastPlayed);
+            var boredom = timeSincePlayed.TotalHours / 24 * 100;
+
+            if (boredom > 100)
+                throw new DeadPonyException();
+            else
+                return (int)boredom;
+        }
+
+        /// <summary>
+        /// Get if the pony has pooped since you last looked
+        /// </summary>
+        /// <returns>If the pony has pooped or not</returns>
+        public bool HasPooped()
+        {
+            var now = DateTime.UtcNow;
+            var lastFeed = GetStats(PonyStatsEnum.Boredom);
+
+            var timeSinceFeed = now.Subtract(lastFeed);
+
+            return timeSinceFeed.TotalMinutes > 45;
         }
 
         public static bool HasPony()
@@ -45,13 +103,13 @@ namespace Ponygotchi.GameLogic
             LocalSettings.UpdateContainer(Constants.StatsSettingsName, PonyStatsEnum.Boredom, DateTime.UtcNow);
         }
 
-        private T GetStats<T>(string chosenStat)
+        private DateTime GetStats(string chosenStat)
         {
             if (StatsContainer == null)
-                StatsContainer = LocalSettings.GetContainer("PonyStats");
+                StatsContainer = LocalSettings.GetContainer(Constants.StatsSettingsName);
 
             if (StatsContainer.Values.ContainsKey(chosenStat))
-                return (T)StatsContainer.Values[chosenStat];
+                return (DateTime)StatsContainer.Values[chosenStat];
             else
                 throw new KeyNotFoundException(string.Format("Didn't find the stat {0}", chosenStat));
         }
