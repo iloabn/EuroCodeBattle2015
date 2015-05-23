@@ -29,6 +29,7 @@
       <DependentUpon>PonyPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Utils\LocalSettings.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utils\NFCMeeting.cs" />
   </ItemGroup>
   <ItemGroup>
     <Page Include="$(MSBuildThisFileDirectory)Controls\EventControl.xaml">

@@ -15,8 +15,8 @@ namespace Ponygotchi.GameLogic
     public static class PonyNameEnum
     {
         public const string Fluttershy = "Fluttershy";
-        public const string TwilightSparkle = "Twilight Sparkle";
-        public const string RainbowDash = "Rainbow Dash";
+        public const string TwilightSparkle = "TwilightSparkle";
+        public const string RainbowDash = "RainbowDash";
     }
 
     public static class PonyMoodLevels
@@ -26,10 +26,10 @@ namespace Ponygotchi.GameLogic
         public const int Sad = 70;
     }
 
-    public enum MoodEnum
+    public static class MoodEnum
     {
-        Happy,
-        Neutral,
-        Sad
+        public const string Happy = "happy";
+        public const string Neutral = "neutral";
+        public const string Sad = "sad";
     }
 }

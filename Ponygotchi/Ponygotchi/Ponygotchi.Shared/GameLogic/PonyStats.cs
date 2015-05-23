@@ -15,7 +15,7 @@ namespace Ponygotchi.GameLogic
         static ApplicationDataContainer StatsContainer;
 
 
-        public MoodEnum GetMood()
+        public string GetMood()
         {
             int maximumMood = Math.Max(GetBoredom(), GetHunger());
 
@@ -101,6 +101,7 @@ namespace Ponygotchi.GameLogic
             LocalSettings.UpdateContainer(Constants.StatsSettingsName, PonyStatsEnum.Age, DateTime.UtcNow.ToString());
             LocalSettings.UpdateContainer(Constants.StatsSettingsName, PonyStatsEnum.Hunger, DateTime.UtcNow.ToString());
             LocalSettings.UpdateContainer(Constants.StatsSettingsName, PonyStatsEnum.Boredom, DateTime.UtcNow.ToString());
+            LocalSettings.UpdateContainer(Constants.StatsSettingsName, "Id", Guid.NewGuid().ToString());
         }
 
         private DateTime GetStats(string chosenStat)
@@ -123,6 +124,17 @@ namespace Ponygotchi.GameLogic
                 return (string)StatsContainer.Values[PonyStatsEnum.Name];
             else
                 throw new KeyNotFoundException(string.Format("Didn't find the stat {0}", PonyStatsEnum.Name));
+        }
+
+        public string GetPonyId()
+        {
+            if (StatsContainer == null)
+                StatsContainer = LocalSettings.GetContainer(Constants.StatsSettingsName);
+
+            if (StatsContainer.Values.ContainsKey("Id"))
+                return (string)StatsContainer.Values["Id"];
+            else
+                throw new KeyNotFoundException("Didn't find id of the pony");
         }
     }
 }

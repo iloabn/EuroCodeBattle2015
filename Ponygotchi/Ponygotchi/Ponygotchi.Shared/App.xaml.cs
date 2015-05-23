@@ -92,8 +92,8 @@ namespace Ponygotchi
                 rootFrame.ContentTransitions = null;
                 rootFrame.Navigated += this.RootFrame_FirstNavigated;
 #endif
-                // If there's already a pony present, navigate to pony page
-                // Othwewise to ChoosePony page
+// If there's already a pony present, navigate to pony page
+// Othwewise to ChoosePony page
 
                 if (GameLogic.PonyStats.HasPony())
                 {
