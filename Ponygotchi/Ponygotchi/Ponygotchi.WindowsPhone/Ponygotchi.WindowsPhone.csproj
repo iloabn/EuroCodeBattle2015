@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>f0fe94fe-b66d-4e8d-9554-65cf5e263632</ProjectGuid>
+    <ProjectGuid>{F0FE94FE-B66D-4E8D-9554-65CF5E263632}</ProjectGuid>
     <OutputType>AppContainerExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Ponygotchi</RootNamespace>
