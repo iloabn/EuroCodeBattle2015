@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Ponygotchi.Pages;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
@@ -91,17 +92,19 @@ namespace Ponygotchi
                 rootFrame.ContentTransitions = null;
                 rootFrame.Navigated += this.RootFrame_FirstNavigated;
 #endif
+                // If there's already a pony present, navigate to pony page
+                // Othwewise to ChoosePony page
 
                 if (GameLogic.PonyStats.HasPony())
                 {
-                    if (!rootFrame.Navigate(typeof(MainPage), e.Arguments))
+                    if (!rootFrame.Navigate(typeof(PonyPage), e.Arguments))
                     {
                         throw new Exception("Failed to create initial page");
                     }
                 }
                 else
                 {
-                    if (!rootFrame.Navigate(typeof(MainPage), e.Arguments))
+                    if (!rootFrame.Navigate(typeof(ChoosePony), e.Arguments))
                     {
                         throw new Exception("Failed to create initial page");
                     }
