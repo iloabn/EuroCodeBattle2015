@@ -27,6 +27,7 @@ namespace Ponygotchi.Pages
         public PonyPage()
         {
             this.InitializeComponent();
+            ShowPonyImage();
         }
 
         public void ShowPonyImage()
