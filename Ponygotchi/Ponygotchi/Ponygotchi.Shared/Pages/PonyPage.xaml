@@ -8,15 +8,18 @@
     mc:Ignorable="d">
     <Grid x:Name="LayoutRoot" Background="Transparent">
         <Image Source="ms-appx:///Images/Background/background_by_leopurofriki-d5ahtll.png" Stretch="Fill" Grid.RowSpan="2"/>
-
+        <Button Name="Shared" Tapped="Shared_Tapped" Content="Share" HorizontalAlignment="Center" VerticalAlignment="Top"/>
         <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0">
+
             <Image Name="PonyImage" Tapped="PonyImage_Tapped" HorizontalAlignment="Center" Margin="30" Height="400"  Width="400"/>
             <Image Name="Poop" Visibility="Collapsed" HorizontalAlignment="Center" Height="80"  Width="80" Source="ms-appx:///Images/Needs/Poop.png"/>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom">
                 <Controls:EventControl x:Name="Food" Margin="20,0" />
                 <Controls:EventControl x:Name="Play" Margin="20,0" />
                 <Controls:EventControl x:Name="Sleep" Margin="20,0" />
+
             </StackPanel>
+
         </StackPanel>
 
     </Grid>
