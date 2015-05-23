@@ -31,9 +31,18 @@ namespace Ponygotchi.GameLogic
             return now.Subtract(creation);
         }
 
-        public void ResetPony()
+        public static bool HasPony()
         {
+            return LocalSettings.HasContainer(Constants.StatsSettingsName);
+        }
 
+        public void ResetPony(string newPonyName)
+        {
+            LocalSettings.CreateContainer(Constants.StatsSettingsName);
+            LocalSettings.UpdateContainer(Constants.StatsSettingsName, "Pony", newPonyName);
+            LocalSettings.UpdateContainer(Constants.StatsSettingsName, PonyStatsEnum.Age, DateTime.UtcNow);
+            LocalSettings.UpdateContainer(Constants.StatsSettingsName, PonyStatsEnum.Hunger, DateTime.UtcNow);
+            LocalSettings.UpdateContainer(Constants.StatsSettingsName, PonyStatsEnum.Boredom, DateTime.UtcNow);
         }
 
         private T GetStats<T>(string chosenStat)
