@@ -7,16 +7,20 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-       <TextBlock Name="SelecteOne" FontSize="50" Margin="106,124,875,587" />
-        <Button Name="fluttershy" Margin="103,276,0,174" cl>
-            <Image Source="ms-appx:///Images/Fluttershy/fluttershy_sitting_by_thatguy1945-d6tghrn.png" Width="300"></Image>
-        </Button>
-        <Button Name="TwilightSparkle" Margin="519,276,0,174">
-            <Image Source="ms-appx:///Images/Twilight Sparkle/unamused_twilight_by_richhap-d4xop3k.png" Width="300"></Image>
-        </Button>
-        <Button Name="RainbowDash" Margin="927,276,0,174">
-            <Image Source="ms-appx:///Images/Rainbow Dash/rainbow_dash_by_freak0uo-d5nixo6.png" Width="300" ></Image>
-        </Button>
-    </Grid>
+    <StackPanel VerticalAlignment="Center" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <TextBlock Name="SelecteOne" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Center" Text="hej hej hej"  />
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center"> 
+            
+          
+            <Button Name="Fluttershy" Click="SelectedPony">
+                <Image Source="ms-appx:///Images/Fluttershy/fluttershy_sitting_by_thatguy1945-d6tghrn.png" Width="150"></Image>
+            </Button>
+            <Button Name="TwilightSparkle" Margin="10" Click="SelectedPony">
+                <Image Source="ms-appx:///Images/Twilight Sparkle/unamused_twilight_by_richhap-d4xop3k.png" Width="150"></Image>
+            </Button>
+            <Button Name="RainbowDash" Click="SelectedPony">
+                <Image Source="ms-appx:///Images/Rainbow Dash/rainbow_dash_by_freak0uo-d5nixo6.png" Width="150" ></Image>
+            </Button>
+        </StackPanel>
+    </StackPanel>
 </Page>

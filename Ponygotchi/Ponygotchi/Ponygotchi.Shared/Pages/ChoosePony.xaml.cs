@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Ponygotchi.GameLogic;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -29,6 +30,12 @@ namespace Ponygotchi.Pages
             SelecteOne.Text = "Select your pony:";
         }
 
-      
+        public void SelectedPony(object sender, RoutedEventArgs e)
+        {
+            PonyStats ponyStats = new PonyStats();
+            var myPony = (sender as Button).Name;
+            ponyStats.ResetPony(myPony);
+            this.Frame.Navigate(typeof(PonyPage));
+        }
     }
 }
