@@ -51,6 +51,10 @@
     <Content Include="$(MSBuildThisFileDirectory)Images\Fluttershy\fluttershy_sitting_by_thatguy1945-d6tghrn.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="$(MSBuildThisFileDirectory)Images\Icon\Apple.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Images\Icon\Ball.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Images\Icon\Poop.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Images\Icon\Sleep.png" />
     <Content Include="$(MSBuildThisFileDirectory)Images\Rainbow Dash\rainbowdash-happy.png" />
     <Content Include="$(MSBuildThisFileDirectory)Images\Rainbow Dash\rainbowdash-neutral.png" />
     <Content Include="$(MSBuildThisFileDirectory)Images\Rainbow Dash\rainbowdash-sad.png" />

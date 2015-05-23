@@ -9,7 +9,7 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
        <TextBlock Name="SelecteOne" FontSize="50" Margin="106,124,875,587" />
-        <Button Name="fluttershy" Margin="103,276,0,174">
+        <Button Name="fluttershy" Margin="103,276,0,174" cl>
             <Image Source="ms-appx:///Images/Fluttershy/fluttershy_sitting_by_thatguy1945-d6tghrn.png" Width="300"></Image>
         </Button>
         <Button Name="TwilightSparkle" Margin="519,276,0,174">
