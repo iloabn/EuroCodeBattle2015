@@ -17,9 +17,15 @@ namespace Ponygotchi.GameLogic
 
         public MoodEnum GetMood()
         {
+            int maximumMood = Math.Max(GetBoredom(), GetHunger());
 
-            // Default
-            return MoodEnum.Happy;
+            if (maximumMood > PonyMoodLevels.Neutral)
+                if (maximumMood > PonyMoodLevels.Sad)
+                    return MoodEnum.Sad;
+                else
+                    return MoodEnum.Neutral;
+            else
+                return MoodEnum.Happy;
         }
 
         /// <summary>

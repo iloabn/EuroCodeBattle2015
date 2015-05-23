@@ -18,6 +18,13 @@ namespace Ponygotchi.GameLogic
         public const string RainbowDash = "Rainbow Dash";
     }
 
+    public static class PonyMoodLevels
+    {
+        public const int Happy = 0;
+        public const int Neutral = 40;
+        public const int Sad = 70;
+    }
+
     public enum MoodEnum
     {
         Happy,
