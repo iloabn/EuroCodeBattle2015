@@ -25,6 +25,10 @@ namespace Ponygotchi.Pages
         public ChoosePony()
         {
             this.InitializeComponent();
+
+            SelecteOne.Text = "Select your pony:";
         }
+
+      
     }
 }

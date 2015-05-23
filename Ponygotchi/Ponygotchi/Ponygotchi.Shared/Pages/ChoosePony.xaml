@@ -8,10 +8,15 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Button Name="fluttershy">
-            <Image Source="" ></Image>
+       <TextBlock Name="SelecteOne" FontSize="50" Margin="106,124,875,587" />
+        <Button Name="fluttershy" Margin="103,276,0,174">
+            <Image Source="\Images\Fluttershy\fluttershy_sitting_by_thatguy1945-d6tghrn.png" Width="300"></Image>
         </Button>
-        <Button Name="TwilightSparkle"></Button>
-        <Button Name="RainbowDash"></Button>
+        <Button Name="TwilightSparkle" Margin="519,276,0,174">
+            <Image Source="\Images\Twilight Sparkle\unamused_twilight_by_richhap-d4xop3k.png" Width="300"></Image>
+        </Button>
+        <Button Name="RainbowDash" Margin="927,276,0,174">
+            <Image Source="\Images\Rainbow Dash\rainbow_dash_by_freak0uo-d5nixo6.png" Width="300" ></Image>
+        </Button>
     </Grid>
 </Page>
