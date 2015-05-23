@@ -26,5 +26,8 @@ namespace Ponygotchi.Pages
         {
             this.InitializeComponent();
         }
+
+       
+
     }
 }
