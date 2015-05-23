@@ -8,10 +8,6 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Button Name="fluttershy">
-         
-        </Button>
-        <Button Name="TwilightSparkle"></Button>
-        <Button Name="RainbowDash"></Button>
+  
     </Grid>
 </Page>

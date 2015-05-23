@@ -36,4 +36,9 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="$(MSBuildThisFileDirectory)Images\Fluttershy\fluttershy_sitting_by_thatguy1945-d6tghrn.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Images\Rainbow Dash\rainbow_dash_by_freak0uo-d5nixo6.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Images\Twilight Sparkle\unamused_twilight_by_richhap-d4xop3k.png" />
+  </ItemGroup>
 </Project>
