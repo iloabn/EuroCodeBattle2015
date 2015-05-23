@@ -97,7 +97,7 @@ namespace Ponygotchi.GameLogic
         public void ResetPony(string newPonyName)
         {
             LocalSettings.CreateContainer(Constants.StatsSettingsName);
-            LocalSettings.UpdateContainer(Constants.StatsSettingsName, "Pony", newPonyName);
+            LocalSettings.UpdateContainer(Constants.StatsSettingsName, PonyStatsEnum.Name, newPonyName);
             LocalSettings.UpdateContainer(Constants.StatsSettingsName, PonyStatsEnum.Age, DateTime.UtcNow);
             LocalSettings.UpdateContainer(Constants.StatsSettingsName, PonyStatsEnum.Hunger, DateTime.UtcNow);
             LocalSettings.UpdateContainer(Constants.StatsSettingsName, PonyStatsEnum.Boredom, DateTime.UtcNow);
@@ -112,6 +112,17 @@ namespace Ponygotchi.GameLogic
                 return (DateTime)StatsContainer.Values[chosenStat];
             else
                 throw new KeyNotFoundException(string.Format("Didn't find the stat {0}", chosenStat));
+        }
+
+        public string GetPonyName()
+        {
+            if (StatsContainer == null)
+                StatsContainer = LocalSettings.GetContainer(Constants.StatsSettingsName);
+
+            if (StatsContainer.Values.ContainsKey(PonyStatsEnum.Name))
+                return (string)StatsContainer.Values[PonyStatsEnum.Name];
+            else
+                throw new KeyNotFoundException(string.Format("Didn't find the stat {0}", PonyStatsEnum.Name));
         }
     }
 }
