@@ -23,12 +23,26 @@ namespace Ponygotchi.Controls
         public EventControl()
         {
             this.InitializeComponent();
+            Loaded += EventControl_Loaded;
         }
 
-        public EventControl(Uri image, int percentage)
+        private void EventControl_Loaded(object sender, RoutedEventArgs e)
         {
-            eventBar.Value = percentage;
-            eventImage.Source = new BitmapImage(image);
+            string uri = "ms-appx:///Images/Needs/";
+            switch(this.Name)
+            {
+                case "Food":
+                    uri += "Apple";
+                    break;
+                case "Play":
+                    uri += "Ball";
+                    break;
+                case "Sleep":
+                    uri += "Sleep";
+                    break;
+            }
+            uri += ".png";
+            eventImage.Source = new BitmapImage(new Uri(uri));
         }
     }
 }

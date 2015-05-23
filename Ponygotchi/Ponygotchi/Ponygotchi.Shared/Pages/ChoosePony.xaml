@@ -16,10 +16,10 @@
                 <Image Source="ms-appx:///Images/Fluttershy/fluttershy_sitting_by_thatguy1945-d6tghrn.png" Width="150"></Image>
             </Button>
             <Button Name="TwilightSparkle" Margin="10" Click="SelectedPony">
-                <Image Source="ms-appx:///Images/Twilight Sparkle/unamused_twilight_by_richhap-d4xop3k.png" Width="150"></Image>
+                <Image Source="ms-appx:///Images/TwilightSparkle/unamused_twilight_by_richhap-d4xop3k.png" Width="150"></Image>
             </Button>
             <Button Name="RainbowDash" Click="SelectedPony">
-                <Image Source="ms-appx:///Images/Rainbow Dash/rainbow_dash_by_freak0uo-d5nixo6.png" Width="150" ></Image>
+                <Image Source="ms-appx:///Images/RainbowDash/rainbow_dash_by_freak0uo-d5nixo6.png" Width="150" ></Image>
             </Button>
         </StackPanel>
     </StackPanel>

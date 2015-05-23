@@ -9,6 +9,9 @@ namespace Ponygotchi.Utils
     {
         static ProximityDevice device;
 
+        public delegate void MetPonyHandler();
+        public static event MetPonyHandler OnPonyMet;
+
         public static void GetReadyToMeetPony()
         {
             device = ProximityDevice.GetDefault();
@@ -20,7 +23,9 @@ namespace Ponygotchi.Utils
 
         private static void Device_DeviceArrived(ProximityDevice sender)
         {
+            if (OnPonyMet == null) return;
 
+            OnPonyMet();
         }
     }
 }
