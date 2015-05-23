@@ -103,7 +103,7 @@ namespace Ponygotchi.GameLogic
         {
             var now = DateTime.UtcNow;
             var timeSincePlayed = now.Subtract(thing);
-            return (int)(timeSincePlayed.TotalMinutes / 1 * 100);
+            return (int)(timeSincePlayed.TotalMinutes / 10 * 100);
         }
 
         /// <summary>
