@@ -92,8 +92,10 @@ namespace Ponygotchi
                 rootFrame.ContentTransitions = null;
                 rootFrame.Navigated += this.RootFrame_FirstNavigated;
 #endif
-                // If there's already a pony present, navigate to pony page
-                // Othwewise to ChoosePony page
+// If there's already a pony present, navigate to pony page
+// Othwewise to ChoosePony page
+
+#if !DEBUG
 
                 if (GameLogic.PonyStats.HasPony())
                 {
@@ -109,6 +111,7 @@ namespace Ponygotchi
                         throw new Exception("Failed to create initial page");
                     }
                 }
+#endif
 
                 // When the navigation stack isn't restored navigate to the first page,
                 // configuring the new page by passing required information as a navigation

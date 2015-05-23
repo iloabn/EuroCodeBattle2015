@@ -5,7 +5,7 @@ namespace Ponygotchi.Utils
 {
     public static class LocalSettings
     {
-        static ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;
+        static ApplicationDataContainer localSettings = ApplicationData.Current.RoamingSettings;
 
         public static bool HasContainer(string containerName)
         {
@@ -55,6 +55,11 @@ namespace Ponygotchi.Utils
         public static void CreateContainer(string containerName)
         {
             localSettings.CreateContainer(containerName, ApplicationDataCreateDisposition.Always);
+        }
+
+        private static void UploadChange(string id, string key, string value)
+        {
+
         }
 
         /// <summary>
