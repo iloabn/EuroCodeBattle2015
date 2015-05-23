@@ -28,17 +28,21 @@ namespace Ponygotchi.Controls
 
         private void EventControl_Loaded(object sender, RoutedEventArgs e)
         {
+            var pStats = new GameLogic.PonyStats();
             string uri = "ms-appx:///Images/Icon/";
             switch(this.Name)
             {
                 case "Food":
                     uri += "Apple";
+                    eventBar.Value = pStats.GetHunger();
                     break;
                 case "Play":
                     uri += "Ball";
+                    eventBar.Value = pStats.GetBoredom();
                     break;
                 case "Sleep":
                     uri += "Sleep";
+                    eventBar.Value = pStats.GetTiredness();
                     break;
             }
             uri += ".png";

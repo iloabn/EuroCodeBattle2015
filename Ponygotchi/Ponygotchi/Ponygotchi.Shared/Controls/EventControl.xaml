@@ -11,6 +11,6 @@
     
     <StackPanel>
         <Image x:Name="eventImage" Stretch="Uniform" VerticalAlignment="Top"/>
-        <ProgressBar x:Name="eventBar" Value="10" Height="48" VerticalAlignment="Top" Background="#00000000" BorderBrush="White" BorderThickness="1" Margin="4" ></ProgressBar>
+        <ProgressBar x:Name="eventBar" Value="10" Margin="2" Height="24" VerticalAlignment="Top" Background="#00000000" BorderBrush="White" BorderThickness="1"></ProgressBar>
     </StackPanel>
 </UserControl>
