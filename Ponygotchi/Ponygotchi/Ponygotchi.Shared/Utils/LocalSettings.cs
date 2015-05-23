@@ -5,7 +5,7 @@ namespace Ponygotchi.Utils
 {
     public static class LocalSettings
     {
-        static ApplicationDataContainer localSettings = ApplicationData.Current.RoamingSettings;
+        static ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;
 
         public static bool HasContainer(string containerName)
         {

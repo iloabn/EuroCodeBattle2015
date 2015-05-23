@@ -40,6 +40,24 @@ namespace Ponygotchi.GameLogic
             return now.Subtract(creation);
         }
 
+        internal void Eat()
+        {
+            LocalSettings.UpdateContainer(Constants.StatsSettingsName, PonyStatsEnum.Hunger, DateTime.UtcNow.ToString());
+        }
+
+        internal void Play()
+        {
+            LocalSettings.UpdateContainer(Constants.StatsSettingsName, PonyStatsEnum.Boredom, DateTime.UtcNow.ToString());
+        }
+
+        internal void Sleep()
+        {
+            LocalSettings.UpdateContainer(Constants.StatsSettingsName, PonyStatsEnum.Sleep, DateTime.UtcNow.ToString());
+        }
+
+
+
+
         /// <summary>
         /// Gets the hunger level for the pony
         /// </summary>
@@ -77,16 +95,20 @@ namespace Ponygotchi.GameLogic
 
         public int GetTiredness()
         {
-            var now = DateTime.UtcNow;
             var lastSlept = GetStats(PonyStatsEnum.Sleep);
-
-            var timeSincePlayed = now.Subtract(lastSlept);
-            var sleepiness = timeSincePlayed.TotalHours / 24 * 100;
-
+            var sleepiness = CalculateThing(lastSlept);
             if (sleepiness > 100)
                 throw new DeadPonyException();
             else
                 return (int)sleepiness;
+        }
+
+        private int CalculateThing(DateTime thing)
+        {
+            var now = DateTime.UtcNow;
+            var timeSincePlayed = now.Subtract(lastSlept);
+            return percentage = timeSincePlayed.TotalHours / 24 * 100;
+
         }
 
         /// <summary>

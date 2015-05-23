@@ -25,6 +25,24 @@ namespace Ponygotchi.Controls
         {
             this.InitializeComponent();
             Loaded += EventControl_Loaded;
+            Tapped += EventControl_Tapped;
+        }
+
+        private void EventControl_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            var pStats = new GameLogic.PonyStats();
+            switch (this.Name)
+            {
+                case "Food":
+                    pStats.Eat();
+                    break;
+                case "Play":
+                    pStats.Play();
+                    break;
+                case "Sleep":
+                    pStats.Sleep();
+                    break;
+            }
         }
 
         private void EventControl_Loaded(object sender, RoutedEventArgs e)
@@ -61,6 +79,33 @@ namespace Ponygotchi.Controls
             }
 
             eventImage.Source = new BitmapImage(new Uri(uri));
+
+            DispatcherTimer t = new DispatcherTimer();
+            t.Interval = new TimeSpan(0, 0, 1);
+            t.Tick += T_Tick;
+            t.Start();
+        }
+
+        private void T_Tick(object sender, object e)
+        {
+            SetPercentage();
+        }
+
+        private void SetPercentage()
+        {
+            var pStats = new GameLogic.PonyStats();
+            switch (this.Name)
+            {
+                case "Food":
+                    eventBar.Value = 100 - pStats.GetHunger();
+                    break;
+                case "Play":
+                    eventBar.Value = 100 - pStats.GetBoredom();
+                    break;
+                case "Sleep":
+                    eventBar.Value = 100 - pStats.GetTiredness();
+                    break;
+            }
         }
     }
 }
