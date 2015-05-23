@@ -66,17 +66,7 @@ namespace Ponygotchi.Controls
             }
             uri += ".png";
 
-            if (eventBar.Value < 50)
-            {
-                eventBar.Foreground = new SolidColorBrush(Colors.Red);
-            }
-            else
-            {
-                if (eventBar.Value < 75.5)
-                    eventBar.Foreground = new SolidColorBrush(Colors.Orange);
-                else
-                    eventBar.Foreground = new SolidColorBrush(Colors.Green);
-            }
+            SetColor(eventBar.Value);
 
             eventImage.Source = new BitmapImage(new Uri(uri));
 
@@ -84,6 +74,22 @@ namespace Ponygotchi.Controls
             t.Interval = new TimeSpan(0, 0, 1);
             t.Tick += T_Tick;
             t.Start();
+        }
+
+        private void SetColor(double value)
+        {
+
+            if (value < 50)
+            {
+                eventBar.Foreground = new SolidColorBrush(Colors.Red);
+            }
+            else
+            {
+                if (value < 75.5)
+                    eventBar.Foreground = new SolidColorBrush(Colors.Orange);
+                else
+                    eventBar.Foreground = new SolidColorBrush(Colors.Green);
+            }
         }
 
         private void T_Tick(object sender, object e)
@@ -106,6 +112,7 @@ namespace Ponygotchi.Controls
                     eventBar.Value = 100 - pStats.GetTiredness();
                     break;
             }
+            SetColor(eventBar.Value);
         }
     }
 }

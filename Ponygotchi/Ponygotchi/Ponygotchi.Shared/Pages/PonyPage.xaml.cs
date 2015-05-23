@@ -28,6 +28,20 @@ namespace Ponygotchi.Pages
         {
             this.InitializeComponent();
             ShowPonyImage();
+            Loaded += PonyPage_Loaded;
+        }
+
+        private void PonyPage_Loaded(object sender, RoutedEventArgs e)
+        {
+            DispatcherTimer t = new DispatcherTimer();
+            t.Interval = new TimeSpan(0, 0, 10);
+            t.Tick += T_Tick;
+            t.Start();
+        }
+
+        private void T_Tick(object sender, object e)
+        {
+            ShowPonyImage();
         }
 
         public void ShowPonyImage()
@@ -39,8 +53,5 @@ namespace Ponygotchi.Pages
             PonyImage.Source = new BitmapImage(new Uri(url));
 
         }
-
-       
-
     }
 }

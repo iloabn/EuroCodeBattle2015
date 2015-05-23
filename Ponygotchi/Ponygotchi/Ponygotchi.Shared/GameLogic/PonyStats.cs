@@ -17,7 +17,7 @@ namespace Ponygotchi.GameLogic
 
         public string GetMood()
         {
-            int maximumMood = Math.Max(GetBoredom(), GetHunger());
+            int maximumMood = Math.Max(Math.Max(GetBoredom(), GetHunger()), GetTiredness());
 
             if (maximumMood > PonyMoodLevels.Neutral)
                 if (maximumMood > PonyMoodLevels.Sad)
@@ -103,7 +103,7 @@ namespace Ponygotchi.GameLogic
         {
             var now = DateTime.UtcNow;
             var timeSincePlayed = now.Subtract(thing);
-            return (int)(timeSincePlayed.TotalMinutes / 24 * 100);
+            return (int)(timeSincePlayed.TotalMinutes / 1 * 100);
         }
 
         /// <summary>
