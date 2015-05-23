@@ -46,6 +46,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="$(MSBuildThisFileDirectory)Images\Background\background_by_leopurofriki-d5ahtll.png" />
     <Content Include="$(MSBuildThisFileDirectory)Images\Fluttershy\happy.png" />
     <Content Include="$(MSBuildThisFileDirectory)Images\Fluttershy\neutral.png" />
     <Content Include="$(MSBuildThisFileDirectory)Images\Fluttershy\sad.png" />

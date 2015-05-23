@@ -8,13 +8,13 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0">
-            <Image Name="PonyImage" HorizontalAlignment="Center" Margin="30" Height="200"  Width="200"/>
-            <Image Name="Poop" HorizontalAlignment="Center" Margin="100,100,0,0" Height="30"  Width="30"/>
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0">
+            <Image Name="PonyImage" HorizontalAlignment="Center" Margin="30" Height="400"  Width="400"/>
+            <Image Name="Poop" Visibility="Collapsed" HorizontalAlignment="Center" Margin="100,100,0,0" Height="30"  Width="30"/>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom">
-                <Controls:EventControl x:Name="Food" />
-                <Controls:EventControl x:Name="Play" />
-                <Controls:EventControl x:Name="Sleep" />
+                <Controls:EventControl x:Name="Food" Margin="20,0" />
+                <Controls:EventControl x:Name="Play" Margin="20,0" />
+                <Controls:EventControl x:Name="Sleep" Margin="20,0" />
             </StackPanel>
         </StackPanel>
 
