@@ -1,13 +1,16 @@
 ﻿<Page
-    x:Class="Ponygotchi.MainPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:Ponygotchi"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:Controls="using:Ponygotchi.Controls"
+    x:Class="Ponygotchi.MainPage"
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+        <Controls:EventControl HorizontalAlignment="Left" Margin="494,275,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </Page>
