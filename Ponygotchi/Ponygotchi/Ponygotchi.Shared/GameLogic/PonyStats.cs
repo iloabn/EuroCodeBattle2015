@@ -66,7 +66,7 @@ namespace Ponygotchi.GameLogic
         {
             var lastFeed = GetStats(PonyStatsEnum.Hunger);
 
-            var hunger = CalculateThing(lastFeed);
+            var hunger = CalculateThing(lastFeed, 4);
             if (hunger > 100)
                 throw new DeadPonyException();
             else
@@ -81,7 +81,7 @@ namespace Ponygotchi.GameLogic
         {
             var lastPlayed = GetStats(PonyStatsEnum.Boredom);
 
-            var boredom = CalculateThing(lastPlayed);
+            var boredom = CalculateThing(lastPlayed, 3);
 
             if (boredom > 100)
                 throw new DeadPonyException();
@@ -92,18 +92,18 @@ namespace Ponygotchi.GameLogic
         public int GetTiredness()
         {
             var lastSlept = GetStats(PonyStatsEnum.Sleep);
-            var sleepiness = CalculateThing(lastSlept);
+            var sleepiness = CalculateThing(lastSlept, 24);
             if (sleepiness > 100)
                 throw new DeadPonyException();
             else
                 return (int)sleepiness;
         }
 
-        private int CalculateThing(DateTime thing)
+        private int CalculateThing(DateTime thing, int hours)
         {
             var now = DateTime.UtcNow;
             var timeSincePlayed = now.Subtract(thing);
-            return (int)(timeSincePlayed.TotalMinutes / 10 * 100);
+            return (int)(timeSincePlayed.TotalHours / hours * 100);
         }
 
         /// <summary>
