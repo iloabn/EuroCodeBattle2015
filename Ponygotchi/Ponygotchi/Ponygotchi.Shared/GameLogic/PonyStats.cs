@@ -76,7 +76,7 @@ namespace Ponygotchi.GameLogic
         /// <summary>
         /// Gets the boredom level
         /// </summary>
-        /// <returns>Between 0 and 100 (0 is not bored, 100 is bored to death)</returns>
+        /// <returns>A number between 0 and 100 (0 is not bored, 100 is bored to death)</returns>
         public int GetBoredom()
         {
             var lastPlayed = GetStats(PonyStatsEnum.Boredom);
@@ -89,6 +89,10 @@ namespace Ponygotchi.GameLogic
                 return (int)boredom;
         }
 
+        /// <summary>
+        /// Gets how tired the pony is
+        /// </summary>
+        /// <returns>A number between 0 and 100 (0 is not tired, 100 is tired to death)</returns>
         public int GetTiredness()
         {
             var lastSlept = GetStats(PonyStatsEnum.Sleep);
@@ -99,6 +103,12 @@ namespace Ponygotchi.GameLogic
                 return (int)sleepiness;
         }
 
+        /// <summary>
+        /// Calculates the time since 'thing' and the percentage of the 'hours'
+        /// </summary>
+        /// <param name="thing">Time 'it' last happened</param>
+        /// <param name="hours">How many hours till it's at zero</param>
+        /// <returns>The percentage as int</returns>
         private int CalculateThing(DateTime thing, int hours)
         {
             var now = DateTime.UtcNow;
@@ -120,11 +130,19 @@ namespace Ponygotchi.GameLogic
             return timeSinceFeed.TotalMinutes > 1;
         }
 
+        /// <summary>
+        /// Checks weather or not a pony exists
+        /// </summary>
+        /// <returns>a boolean saying if we have a pony or not</returns>
         public static bool HasPony()
         {
             return LocalSettings.HasContainer(Constants.StatsSettingsName);
         }
 
+        /// <summary>
+        /// Creates a new pony with the name supplied
+        /// </summary>
+        /// <param name="newPonyName">The new ponys name</param>
         public void ResetPony(string newPonyName)
         {
             LocalSettings.CreateContainer(Constants.StatsSettingsName);

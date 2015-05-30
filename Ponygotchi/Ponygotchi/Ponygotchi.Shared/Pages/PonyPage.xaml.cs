@@ -16,6 +16,7 @@ using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
 using Ponygotchi.Utils;
 using System.Threading.Tasks;
+using Windows.System;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -67,7 +68,7 @@ namespace Ponygotchi.Pages
         private async void PonyImage_Tapped(object sender, TappedRoutedEventArgs e)
         {
             count++;
-            if(count > 7)
+            if (count > 7)
             {
                 Poop.Visibility = Windows.UI.Xaml.Visibility.Visible;
                 await Task.Delay(5000);
@@ -85,6 +86,14 @@ namespace Ponygotchi.Pages
         private void Shared_Tapped(object sender, TappedRoutedEventArgs e)
         {
             Share();
+        }
+
+        private async void Button_Click(object sender, RoutedEventArgs e)
+        {
+            await Launcher.LaunchUriAsync(
+                new Uri(
+                    "mailto:moodbeam@outlook.com?subject=Feedback&body=Give feedback"
+                    ));
         }
     }
 }
