@@ -24,7 +24,7 @@ namespace Ponygotchi.Controls
         private static readonly DependencyProperty IsBarVisibleProperty =
       DependencyProperty.Register("IsBarVisible",
       typeof(bool),
-      typeof(EventControl), 
+      typeof(EventControl),
       new PropertyMetadata(true));
 
         public bool IsBarVisible
@@ -42,50 +42,64 @@ namespace Ponygotchi.Controls
 
         private void EventControl_Tapped(object sender, TappedRoutedEventArgs e)
         {
-            var pStats = new GameLogic.PonyStats();
-            switch (this.Name)
+            try
             {
-                case "Food":
-                    pStats.Eat();
-                    break;
-                case "Play":
-                    pStats.Play();
-                    break;
-                case "Sleep":
-                    pStats.Sleep();
-                    break;
+                var pStats = new GameLogic.PonyStats();
+                switch (this.Name)
+                {
+                    case "Food":
+                        pStats.Eat();
+                        break;
+                    case "Play":
+                        pStats.Play();
+                        break;
+                    case "Sleep":
+                        pStats.Sleep();
+                        break;
+                }
+            }
+            catch (Exception)
+            {
+
             }
         }
 
         private void EventControl_Loaded(object sender, RoutedEventArgs e)
         {
-            var pStats = new GameLogic.PonyStats();
-            string uri = "ms-appx:///Images/Needs/";
-            switch (this.Name)
+            try
             {
-                case "Food":
-                    uri += "Apple";
-                    eventBar.Value = 100 - pStats.GetHunger();
-                    break;
-                case "Play":
-                    uri += "Ball";
-                    eventBar.Value = 100 - pStats.GetBoredom();
-                    break;
-                case "Sleep":
-                    uri += "Sleep";
-                    eventBar.Value = 100 - pStats.GetTiredness();
-                    break;
+                var pStats = new GameLogic.PonyStats();
+                string uri = "ms-appx:///Images/Needs/";
+                switch (this.Name)
+                {
+                    case "Food":
+                        uri += "Apple";
+                        eventBar.Value = 100 - pStats.GetHunger();
+                        break;
+                    case "Play":
+                        uri += "Ball";
+                        eventBar.Value = 100 - pStats.GetBoredom();
+                        break;
+                    case "Sleep":
+                        uri += "Sleep";
+                        eventBar.Value = 100 - pStats.GetTiredness();
+                        break;
+                }
+                uri += ".png";
+
+                SetColor(eventBar.Value);
+
+                eventImage.Source = new BitmapImage(new Uri(uri));
+
+                DispatcherTimer t = new DispatcherTimer();
+                t.Interval = new TimeSpan(0, 0, 1);
+                t.Tick += T_Tick;
+                t.Start();
             }
-            uri += ".png";
+            catch (Exception)
+            {
 
-            SetColor(eventBar.Value);
-
-            eventImage.Source = new BitmapImage(new Uri(uri));
-
-            DispatcherTimer t = new DispatcherTimer();
-            t.Interval = new TimeSpan(0, 0, 1);
-            t.Tick += T_Tick;
-            t.Start();
+            }
         }
 
         private void SetColor(double value)

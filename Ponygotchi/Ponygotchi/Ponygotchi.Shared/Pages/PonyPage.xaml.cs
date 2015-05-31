@@ -28,10 +28,11 @@ namespace Ponygotchi.Pages
     public sealed partial class PonyPage : Page
     {
         int count = 0;
+        DispatcherTimer imageUpdate;
+        string lastImg;
         public PonyPage()
         {
             this.InitializeComponent();
-            ShowPonyImage();
             Loaded += PonyPage_Loaded;
         }
 
@@ -40,10 +41,10 @@ namespace Ponygotchi.Pages
             NFCMeeting.OnPonyMet += NFCMeeting_OnPonyMet;
             NFCMeeting.GetReadyToMeetPony();
 
-            DispatcherTimer t = new DispatcherTimer();
-            t.Interval = new TimeSpan(0, 0, 10);
-            t.Tick += T_Tick;
-            t.Start();
+            imageUpdate = new DispatcherTimer();
+            imageUpdate.Interval = new TimeSpan(0, 0, 1);
+            imageUpdate.Tick += T_Tick;
+            imageUpdate.Start();
         }
 
         private void NFCMeeting_OnPonyMet()
@@ -58,11 +59,36 @@ namespace Ponygotchi.Pages
 
         public void ShowPonyImage()
         {
+            //Try to get the stats of the pony
             PonyStats pStats = new PonyStats();
-            var mood = pStats.GetMood();
-            var name = pStats.GetPonyName();
-            var url = "ms-appx:///Images/" + name + "/" + mood + ".png";
-            PonyImage.Source = new BitmapImage(new Uri(url));
+
+            try
+            {
+                var mood = pStats.GetMood();
+                var name = pStats.GetPonyName();
+                var url = "ms-appx:///Images/" + name + "/" + mood + ".png";
+                if (url != lastImg)
+                    PonyImage.Source = new BitmapImage(new Uri(url));
+
+                lastImg = url;
+            }
+            catch (DeadPonyException ex)
+            {
+                //If the pony is actually dead we get here
+
+                //First we stop the image to update
+                imageUpdate.Stop();
+                var url = "ms-appx://Images/" + pStats.GetPonyName() + "/sad.png";
+                PonyImage.Source = new BitmapImage(new Uri(url));
+                DeathGrid.Visibility = Visibility.Visible;
+                DeathAnimation.Begin();
+                NewPonyButton.Click += NewPonyButton_Click;
+            }
+        }
+
+        private void NewPonyButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(ChoosePony));
         }
 
         private async void PonyImage_Tapped(object sender, TappedRoutedEventArgs e)

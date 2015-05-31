@@ -57,6 +57,7 @@
     <Content Include="$(MSBuildThisFileDirectory)Images\Needs\Ball.png" />
     <Content Include="$(MSBuildThisFileDirectory)Images\Needs\Poop.png" />
     <Content Include="$(MSBuildThisFileDirectory)Images\Needs\Sleep.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Images\Other\tombstone.png" />
     <Content Include="$(MSBuildThisFileDirectory)Images\RainbowDash\happy.png" />
     <Content Include="$(MSBuildThisFileDirectory)Images\RainbowDash\neutral.png" />
     <Content Include="$(MSBuildThisFileDirectory)Images\RainbowDash\sad.png" />
