@@ -65,9 +65,9 @@ namespace Ponygotchi.GameLogic
         public int GetHunger()
         {
             var lastFeed = GetStats(PonyStatsEnum.Hunger);
-
             var hunger = CalculateThing(lastFeed, 4);
-            if (hunger > 100)
+
+            if (hunger > 100 && GetBoredom() > 100 || hunger > 100 && GetTiredness() > 100)
                 throw new DeadPonyException();
             else
                 return (int)hunger;
@@ -83,7 +83,7 @@ namespace Ponygotchi.GameLogic
 
             var boredom = CalculateThing(lastPlayed, 3);
 
-            if (boredom > 100)
+            if (boredom > 100 && GetHunger() > 100 || boredom > 100 && GetTiredness() > 100)
                 throw new DeadPonyException();
             else
                 return (int)boredom;
@@ -97,7 +97,7 @@ namespace Ponygotchi.GameLogic
         {
             var lastSlept = GetStats(PonyStatsEnum.Sleep);
             var sleepiness = CalculateThing(lastSlept, 24);
-            if (sleepiness > 100)
+            if (sleepiness > 100 && GetBoredom() > 100 || sleepiness > 100 && GetHunger() > 100)
                 throw new DeadPonyException();
             else
                 return (int)sleepiness;
@@ -123,11 +123,11 @@ namespace Ponygotchi.GameLogic
         public bool HasPooped()
         {
             var now = DateTime.UtcNow;
-            var lastFeed = GetStats(PonyStatsEnum.Boredom);
+            var lastFeed = GetStats(PonyStatsEnum.Hunger);
 
             var timeSinceFeed = now.Subtract(lastFeed);
 
-            return timeSinceFeed.TotalMinutes > 45;
+            return timeSinceFeed.TotalMinutes > 1;
         }
 
         /// <summary>
@@ -148,9 +148,9 @@ namespace Ponygotchi.GameLogic
             LocalSettings.CreateContainer(Constants.StatsSettingsName);
             LocalSettings.UpdateContainer(Constants.StatsSettingsName, PonyStatsEnum.Name, newPonyName);
             LocalSettings.UpdateContainer(Constants.StatsSettingsName, PonyStatsEnum.Age, DateTime.UtcNow.ToString());
-            LocalSettings.UpdateContainer(Constants.StatsSettingsName, PonyStatsEnum.Hunger, DateTime.UtcNow.ToString());
-            LocalSettings.UpdateContainer(Constants.StatsSettingsName, PonyStatsEnum.Boredom, DateTime.UtcNow.ToString());
-            LocalSettings.UpdateContainer(Constants.StatsSettingsName, PonyStatsEnum.Sleep, DateTime.UtcNow.ToString());
+            LocalSettings.UpdateContainer(Constants.StatsSettingsName, PonyStatsEnum.Hunger, DateTime.UtcNow.AddHours(-2).ToString());
+            LocalSettings.UpdateContainer(Constants.StatsSettingsName, PonyStatsEnum.Boredom, DateTime.UtcNow.AddHours(-2).ToString());
+            LocalSettings.UpdateContainer(Constants.StatsSettingsName, PonyStatsEnum.Sleep, DateTime.UtcNow.AddHours(-12).ToString());
             LocalSettings.UpdateContainer(Constants.StatsSettingsName, "Id", Guid.NewGuid().ToString());
         }
 
